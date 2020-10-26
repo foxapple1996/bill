@@ -3,9 +3,12 @@ package com.zfoxapple.jxtm.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.zfoxapple.jxtm.service.MenuService;
 import com.zfoxapple.jxtm.service.impl.MenuServiceImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
@@ -15,6 +18,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/api/menu")
+@Api(value = "获取菜单")
 public class MenuController {
 
     private MenuService menuService;
@@ -25,8 +29,9 @@ public class MenuController {
     }
 
 
-    @RequestMapping("/getMenu")
+    @RequestMapping(value = "/getMenu", method = RequestMethod.GET)
     @ResponseBody
+    @ApiOperation(value="获取所有菜单")
     public String getMenu(){
         Map<String, Object> map = new HashMap<>();
         List list3 = menuService.GetAllMenu();

@@ -3,9 +3,12 @@ package com.zfoxapple.jxtm.controller;
 import com.alibaba.fastjson.JSON;
 import com.zfoxapple.jxtm.model.Account;
 import com.zfoxapple.jxtm.service.AccountService;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
@@ -14,6 +17,7 @@ import java.util.Map;
 
 @Controller
 @RequestMapping("/api/account")
+@Api(value = "账号管理")
 public class AccountController {
     private final AccountService accountService;
 
@@ -23,8 +27,9 @@ public class AccountController {
     }
 
 
-    @RequestMapping("/getAllAccount")
+    @RequestMapping(value = "/getAllAccount", method = RequestMethod.GET)
     @ResponseBody
+    @ApiOperation(value = "获取所有账号信息")
     public String getAllAccount(){
         List<Account> lists = accountService.queryAllAccount();
         Map<String, Object> map = new HashMap<>();
