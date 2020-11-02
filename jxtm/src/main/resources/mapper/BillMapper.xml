@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zfoxapple.jxtm.mapper.BillMapper">
+    <select id="queryAllBill" resultType="com.zfoxapple.jxtm.model.Bill" >
+        select b_id, b_type, b_money, b_date,b_info  from bill;
+    </select>
+    <insert id="insertBill" parameterType="com.zfoxapple.jxtm.dto.BillDTO">
+        insert into bill(b_type, b_money, b_date, b_info) values
+        (#{bill.bType}, #{bill.bMoney}, #{bill.bDate}, #{bill.bInfo})
+    </insert>
+</mapper>

@@ -1,14 +1,10 @@
-package com.zfoxapple.bill;
+package com.zfoxapple.jxtm;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
-import com.zfoxapple.jxtm.AppRun;
 import com.zfoxapple.jxtm.service.MenuService;
-import com.zfoxapple.jxtm.service.impl.MenuServiceImpl;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 

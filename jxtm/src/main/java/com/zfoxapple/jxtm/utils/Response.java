@@ -2,38 +2,33 @@ package com.zfoxapple.jxtm.utils;
 
 import java.io.Serializable;
 
-public class Response<T> implements Serializable {
+public class Response {
 
-    private static final long serialVersionUID = 7285144287238551716L;
+    private final static String SUCCESS = "success";
 
-    private static final String successCode = "200";
+    private final static String FAIL = "fail";
 
-    private T data;
-
-    private String code;
-
-    private String msg;
-
-    public Response() {
-        this.code = successCode;
-        this.msg = "请求成功";
+    public static <T> ResponseResult<T> makeOKRsp() {
+        return new ResponseResult<T>().setCode(ResultCode.SUCCESS).setMsg(SUCCESS);
     }
 
-    public Response(String code, String msg) {
-        this();
-        this.code = code;
-        this.msg = msg;
+    public static <T> ResponseResult<T> makeOKRsp(String message) {
+        return new ResponseResult<T>().setCode(ResultCode.SUCCESS).setMsg(message);
     }
 
-    public Response(T data, String code, String msg) {
-        this();
-        this.data = data;
-        this.code = code;
-        this.msg = msg;
+    public static <T> ResponseResult<T> makeOKRsp(T data) {
+        return new ResponseResult<T>().setCode(ResultCode.SUCCESS).setMsg(SUCCESS).setData(data);
     }
 
-    public Response(T data) {
-        this();
-        this.data = data;
+    public static <T> ResponseResult<T> makeErrRsp(String message) {
+        return new ResponseResult<T>().setCode(ResultCode.INTERNAL_SERVER_ERROR).setMsg(message);
+    }
+
+    public static <T> ResponseResult<T> makeRsp(int code, String msg) {
+        return new ResponseResult<T>().setCode(code).setMsg(msg);
+    }
+
+    public static <T> ResponseResult<T> makeRsp(int code, String msg, T data) {
+        return new ResponseResult<T>().setCode(code).setMsg(msg).setData(data);
     }
 }
